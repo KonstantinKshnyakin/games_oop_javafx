@@ -13,17 +13,6 @@ import java.io.PrintStream;
 
 public class LogicTest {
 
-    @AfterClass
-    public static void setup() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-    }
-
-    public static void cleanup() {
-        PrintStream def = System.out;
-        System.setOut(def);
-    }
-
     @Test
     public void addTest() {
         Logic logic = new Logic();
@@ -43,7 +32,6 @@ public class LogicTest {
         logic.add(bishopBlack1);
         logic.add(bishopBlack2);
         logic.clean();
-        System.out.println(logic.toString());
         Assert.assertThat(logic.toString(), Matchers.containsString("Logic{figures=[null, null, null, null, null, null, null"));
     }
 
